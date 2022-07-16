@@ -10,10 +10,9 @@ import {
   FormatStrikethrough,
   HorizontalRule,
   Redo,
-  Title,
   Undo,
 } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import { useEditor, EditorContent, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { useEffect, useState } from 'react';
@@ -63,18 +62,18 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       <IconButton onClick={() => editor.chain().focus().unsetAllMarks().run()}>
         <FormatClear />
       </IconButton>
-      <IconButton
+      <Button
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
         className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
       >
-        <Title />
-      </IconButton>
-      <IconButton
+        대제목
+      </Button>
+      <Button
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
         className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
       >
-        <Title />
-      </IconButton>
+        소제목
+      </Button>
       <IconButton
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={editor.isActive('bulletList') ? 'is-active' : ''}
