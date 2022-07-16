@@ -1,6 +1,6 @@
 import { useEditor, EditorContent, Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 const MenuBar = ({ editor }: { editor: Editor | null }) => {
@@ -118,17 +118,19 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
 };
 
 function App() {
+  const [state, setState] = useState("<p>Hello World!</p>");
   const editor = useEditor({
     extensions: [StarterKit],
-    content: "<p>Hello World!</p>",
+    content: state,
   });
   useEffect(() => {
-    if (editor) {
-      editor.on("update", (a) => {
-        console.log(a.editor.getHTML());
-      });
-    }
+    editor?.on("update", (a) => {
+      setState(a.editor.getHTML());
+    });
   }, [editor]);
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
   return (
     <div className="editor">
       <MenuBar editor={editor} />
