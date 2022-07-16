@@ -39,3 +39,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.editor {
+  text-align: left;
+  width: 1080px;
+  min-height: 400px;
+}
