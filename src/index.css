@@ -55,6 +55,9 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+button.is-active {
+  border: 1px solid white;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
