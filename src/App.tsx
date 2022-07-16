@@ -126,12 +126,10 @@ function App() {
       }),
     ],
     content: state,
+    onUpdate: ({ editor }) => {
+      setState(editor.getHTML());
+    },
   });
-  useEffect(() => {
-    editor?.on("update", (a) => {
-      setState(a.editor.getHTML());
-    });
-  }, [editor]);
   useEffect(() => {
     console.log(state);
   }, [state]);
