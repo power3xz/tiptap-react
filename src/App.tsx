@@ -120,7 +120,11 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
 function App() {
   const [state, setState] = useState("<p>Hello World!</p>");
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [
+      StarterKit.configure({
+        heading: { HTMLAttributes: { class: "heading" } },
+      }),
+    ],
     content: state,
   });
   useEffect(() => {
