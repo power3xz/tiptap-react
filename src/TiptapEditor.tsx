@@ -1,6 +1,10 @@
 import { css } from '@emotion/css';
 import {
   Code,
+  FormatAlignCenter,
+  FormatAlignJustify,
+  FormatAlignLeft,
+  FormatAlignRight,
   FormatBold,
   FormatClear,
   FormatItalic,
@@ -23,6 +27,7 @@ import TableCell from '@tiptap/extension-table-cell';
 import TableHeader from '@tiptap/extension-table-header';
 import TableRow from '@tiptap/extension-table-row';
 import Image from '@tiptap/extension-image';
+import TextAlign from '@tiptap/extension-text-align';
 
 const componentCss = css`
   text-align: left;
@@ -107,6 +112,30 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
         <FormatListBulleted />
       </IconButton>
       <IconButton
+        className={editor.isActive({ textAlign: 'left' }) ? 'is-active' : ''}
+        onClick={() => editor.chain().focus().setTextAlign('left').run()}
+      >
+        <FormatAlignLeft />
+      </IconButton>
+      <IconButton
+        className={editor.isActive({ textAlign: 'center' }) ? 'is-active' : ''}
+        onClick={() => editor.chain().focus().setTextAlign('center').run()}
+      >
+        <FormatAlignCenter />
+      </IconButton>
+      <IconButton
+        className={editor.isActive({ textAlign: 'right' }) ? 'is-active' : ''}
+        onClick={() => editor.chain().focus().setTextAlign('right').run()}
+      >
+        <FormatAlignRight />
+      </IconButton>
+      <IconButton
+        className={editor.isActive({ textAlign: 'justify' }) ? 'is-active' : ''}
+        onClick={() => editor.chain().focus().setTextAlign('justify').run()}
+      >
+        <FormatAlignJustify />
+      </IconButton>
+      <IconButton
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         className={editor.isActive('orderedList') ? 'is-active' : ''}
       >
@@ -167,6 +196,7 @@ export function TiptapEditor() {
       TableHeader,
       TableCell,
       Image,
+      TextAlign.configure({ types: ['image', 'paragraph'] }),
     ],
     content: state,
     onUpdate: ({ editor }) => {
