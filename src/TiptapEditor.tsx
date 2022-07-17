@@ -30,16 +30,16 @@ import Image from '@tiptap/extension-image';
 import TextAlign from '@tiptap/extension-text-align';
 
 const componentCss = css`
-  text-align: left;
-  width: 1080px;
+  width: 1120px;
   min-height: 400px;
   margin: 0 auto;
   .te-button {
     transition: border 0.2s ease;
     border: 1px solid transparent;
+    margin: 0 4px;
   }
   .te-button.is-active {
-    border: 1px solid #555555;
+    border: 1px solid #999999;
   }
   .te-table {
     border: 1px solid #333333;
@@ -59,7 +59,11 @@ const componentCss = css`
   }
   .ProseMirror {
     outline: none;
-    padding: 0 12px 12px 12px;
+    min-height: 400px;
+    padding: 0 20px 20px 20px;
+  }
+  .te-editor-menubar {
+    padding: 8px 8px;
   }
 `;
 
@@ -74,7 +78,7 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
     }
   };
   return (
-    <>
+    <div className="te-editor-menubar">
       <IconButton
         onClick={() => editor.chain().focus().toggleBold().run()}
         size="small"
@@ -229,7 +233,7 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       <IconButton onClick={() => editor.chain().focus().redo().run()}>
         <Redo />
       </IconButton>
-    </>
+    </div>
   );
 };
 
