@@ -54,6 +54,16 @@ const componentCss = css`
       border: 1px solid #333333;
     }
   }
+  h1.heading {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    font-weight: bold;
+    border-bottom: 1px solid #333333;
+  }
+  h2.heading {
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
   strong {
     font-weight: bold;
   }
@@ -124,7 +134,7 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
             : 'te-button'
         }
       >
-        대제목
+        H1
       </Button>
       <Button
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
@@ -134,7 +144,7 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
             : 'te-button'
         }
       >
-        소제목
+        H2
       </Button>
       <IconButton
         onClick={() => editor.chain().focus().toggleBulletList().run()}
