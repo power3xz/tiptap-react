@@ -10,12 +10,17 @@ import {
   FormatStrikethrough,
   HorizontalRule,
   Redo,
+  TableChart,
   Undo,
 } from '@mui/icons-material';
 import { Button, IconButton } from '@mui/material';
 import { useEditor, EditorContent, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { useEffect, useState } from 'react';
+import Table from '@tiptap/extension-table';
+import TableCell from '@tiptap/extension-table-cell';
+import TableHeader from '@tiptap/extension-table-header';
+import TableRow from '@tiptap/extension-table-row';
 
 const componentCss = css`
   text-align: left;
@@ -103,6 +108,17 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       >
         <HorizontalRule />
       </IconButton>
+      <IconButton
+        onClick={() =>
+          editor
+            .chain()
+            .focus()
+            .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+            .run()
+        }
+      >
+        <TableChart />
+      </IconButton>
       <IconButton onClick={() => editor.chain().focus().undo().run()}>
         <Undo />
       </IconButton>
@@ -120,6 +136,10 @@ export function TiptapEditor() {
       StarterKit.configure({
         heading: { HTMLAttributes: { class: 'heading' } },
       }),
+      Table.configure({ resizable: true }),
+      TableRow,
+      TableHeader,
+      TableCell,
     ],
     content: state,
     onUpdate: ({ editor }) => {
