@@ -9,6 +9,7 @@ import {
   FormatQuote,
   FormatStrikethrough,
   HorizontalRule,
+  Photo,
   Redo,
   TableChart,
   Undo,
@@ -21,6 +22,7 @@ import Table from '@tiptap/extension-table';
 import TableCell from '@tiptap/extension-table-cell';
 import TableHeader from '@tiptap/extension-table-header';
 import TableRow from '@tiptap/extension-table-row';
+import Image from '@tiptap/extension-image';
 
 const componentCss = css`
   text-align: left;
@@ -49,6 +51,12 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
   if (!editor) {
     return null;
   }
+  const addImage = () => {
+    const url = window.prompt('URL');
+    if (url) {
+      editor.chain().focus().setImage({ src: url }).run();
+    }
+  };
   return (
     <>
       <IconButton
@@ -132,6 +140,9 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       >
         <TableChart />
       </IconButton>
+      <IconButton onClick={addImage}>
+        <Photo />
+      </IconButton>
       <IconButton onClick={() => editor.chain().focus().undo().run()}>
         <Undo />
       </IconButton>
@@ -155,6 +166,7 @@ export function TiptapEditor() {
       TableRow,
       TableHeader,
       TableCell,
+      Image,
     ],
     content: state,
     onUpdate: ({ editor }) => {
