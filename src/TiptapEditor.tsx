@@ -50,6 +50,9 @@ const componentCss = css`
       border: 1px solid #333333;
     }
   }
+  strong {
+    font-weight: bold;
+  }
 `;
 
 const MenuBar = ({ editor }: { editor: Editor | null }) => {
