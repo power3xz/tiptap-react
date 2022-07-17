@@ -183,7 +183,9 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
 };
 
 export function TiptapEditor() {
-  const [state, setState] = useState('<p>Hello World!</p>');
+  const [state, setState] = useState(
+    '<img src="https://images.unsplash.com/photo-1447703693928-9cd89c8d3ac5?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=800" /><p>Hello World!</p>'
+  );
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
