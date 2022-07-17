@@ -34,8 +34,12 @@ const componentCss = css`
   width: 1080px;
   min-height: 400px;
   margin: 0 auto;
-  button.is-active {
-    border: 1px solid black;
+  .te-button {
+    transition: border 0.2s ease;
+    border: 1px solid transparent;
+  }
+  .te-button.is-active {
+    border: 1px solid #555555;
   }
   .te-table {
     border: 1px solid #333333;
@@ -52,6 +56,9 @@ const componentCss = css`
   }
   strong {
     font-weight: bold;
+  }
+  .ProseMirror {
+    outline: none;
   }
 `;
 
@@ -70,26 +77,34 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       <IconButton
         onClick={() => editor.chain().focus().toggleBold().run()}
         size="small"
-        className={editor.isActive('bold') ? 'is-active' : ''}
+        className={
+          editor.isActive('bold') ? 'is-active te-button' : 'te-button'
+        }
       >
         <FormatBold />
       </IconButton>
       <IconButton
         size="small"
         onClick={() => editor.chain().focus().toggleItalic().run()}
-        className={editor.isActive('italic') ? 'is-active' : ''}
+        className={
+          editor.isActive('italic') ? 'is-active te-button' : 'te-button'
+        }
       >
         <FormatItalic />
       </IconButton>
       <IconButton
         onClick={() => editor.chain().focus().toggleStrike().run()}
-        className={editor.isActive('strike') ? 'is-active' : ''}
+        className={
+          editor.isActive('strike') ? 'is-active te-button' : 'te-button'
+        }
       >
         <FormatStrikethrough />
       </IconButton>
       <IconButton
         onClick={() => editor.chain().focus().toggleCode().run()}
-        className={editor.isActive('code') ? 'is-active' : ''}
+        className={
+          editor.isActive('code') ? 'is-active te-button' : 'te-button'
+        }
       >
         <Code />
       </IconButton>
@@ -98,61 +113,93 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       </IconButton>
       <Button
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
+        className={
+          editor.isActive('heading', { level: 1 })
+            ? 'is-active te-button'
+            : 'te-button'
+        }
       >
         대제목
       </Button>
       <Button
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
+        className={
+          editor.isActive('heading', { level: 2 })
+            ? 'is-active te-button'
+            : 'te-button'
+        }
       >
         소제목
       </Button>
       <IconButton
         onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={editor.isActive('bulletList') ? 'is-active' : ''}
+        className={
+          editor.isActive('bulletList') ? 'is-active te-button' : 'te-button'
+        }
       >
         <FormatListBulleted />
       </IconButton>
       <IconButton
-        className={editor.isActive({ textAlign: 'left' }) ? 'is-active' : ''}
+        className={
+          editor.isActive({ textAlign: 'left' })
+            ? 'is-active te-button'
+            : 'te-button'
+        }
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
       >
         <FormatAlignLeft />
       </IconButton>
       <IconButton
-        className={editor.isActive({ textAlign: 'center' }) ? 'is-active' : ''}
+        className={
+          editor.isActive({ textAlign: 'center' })
+            ? 'is-active te-button'
+            : 'te-button'
+        }
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
       >
         <FormatAlignCenter />
       </IconButton>
       <IconButton
-        className={editor.isActive({ textAlign: 'right' }) ? 'is-active' : ''}
+        className={
+          editor.isActive({ textAlign: 'right' })
+            ? 'is-active te-button'
+            : 'te-button'
+        }
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
       >
         <FormatAlignRight />
       </IconButton>
       <IconButton
-        className={editor.isActive({ textAlign: 'justify' }) ? 'is-active' : ''}
+        className={
+          editor.isActive({ textAlign: 'justify' })
+            ? 'is-active te-button'
+            : 'te-button'
+        }
         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
       >
         <FormatAlignJustify />
       </IconButton>
       <IconButton
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
-        className={editor.isActive('orderedList') ? 'is-active' : ''}
+        className={
+          editor.isActive('orderedList') ? 'is-active te-button' : 'te-button'
+        }
       >
         <FormatListNumbered />
       </IconButton>
       <IconButton
         onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-        className={editor.isActive('codeBlock') ? 'is-active' : ''}
+        className={
+          editor.isActive('codeBlock') ? 'is-active te-button' : 'te-button'
+        }
       >
         <Code />
       </IconButton>
       <IconButton
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
-        className={editor.isActive('blockquote') ? 'is-active' : ''}
+        className={
+          editor.isActive('blockquote') ? 'is-active te-button' : 'te-button'
+        }
       >
         <FormatQuote />
       </IconButton>
