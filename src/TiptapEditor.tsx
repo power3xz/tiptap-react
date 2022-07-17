@@ -30,6 +30,19 @@ const componentCss = css`
   button.is-active {
     border: 1px solid black;
   }
+  .te-table {
+    border: 1px solid #333333;
+    border-collapse: collapse;
+    margin: 0;
+    overflow: hidden;
+    table-layout: fixed;
+    width: 100%;
+    td,
+    th {
+      padding: 4px;
+      border: 1px solid #333333;
+    }
+  }
 `;
 
 const MenuBar = ({ editor }: { editor: Editor | null }) => {
@@ -136,7 +149,9 @@ export function TiptapEditor() {
       StarterKit.configure({
         heading: { HTMLAttributes: { class: 'heading' } },
       }),
-      Table.configure({ resizable: true }),
+      Table.configure({
+        HTMLAttributes: { class: 'te-table' },
+      }),
       TableRow,
       TableHeader,
       TableCell,
