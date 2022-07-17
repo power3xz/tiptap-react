@@ -18,7 +18,7 @@ import {
   TableChart,
   Undo,
 } from '@mui/icons-material';
-import { Button, IconButton } from '@mui/material';
+import { Button, IconButton, Paper } from '@mui/material';
 import { useEditor, EditorContent, Editor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import { useEffect, useState } from 'react';
@@ -59,6 +59,7 @@ const componentCss = css`
   }
   .ProseMirror {
     outline: none;
+    padding: 0 12px 12px 12px;
   }
 `;
 
@@ -259,9 +260,9 @@ export function TiptapEditor() {
     console.log(state);
   }, [state]);
   return (
-    <div className={componentCss}>
+    <Paper className={componentCss} variant="outlined">
       <MenuBar editor={editor} />
       <EditorContent editor={editor} />
-    </div>
+    </Paper>
   );
 }

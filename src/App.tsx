@@ -2,7 +2,11 @@ import { TiptapEditor } from './TiptapEditor';
 import './App.css';
 
 function App() {
-  return <TiptapEditor />;
+  return (
+    <div className="app">
+      <TiptapEditor />
+    </div>
+  );
 }
 
 export default App;
